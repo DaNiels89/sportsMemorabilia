@@ -21,7 +21,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(product_params)
+    @product = Product.update(product_params)
     @product.user_id = current_user.id
     if @product.save
       redirect_to @product

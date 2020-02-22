@@ -13,34 +13,19 @@ class ProductsController < ApplicationController
     @product = Product.new
   end
 
-  def edit
-    if current_user != @product.user
-      redirect_to root_path
-      flash[:alert] = 'Unauthorized request'
-    end
-  end
+  def edit; end
 
   def create
     @product = Product.new(product_params)
     @product.user_id = current_user.id
-    if @product.save
-      redirect_to @product
-      flash[:notice] = 'Memorabilia created'
-    else
-      redirect_back(fallback_location: root_path)
-      flash[:alert] = 'Memorabilia creation failed'
-    end
+
+    redirect_to @product
   end
 
   def update
-    if current_user == @product.user
-      @product.update(product_params)
-      redirect_to @product
-      flash[:notice] = 'Memorabilia is updated'
-    else
-      redirect_back(fallback_location: root_path)
-      flash[:alert] = 'Not authorized to update post'
-    end
+    @product = Product.update(product_params)
+
+    redirect_to @product
   end
 
   def destroy

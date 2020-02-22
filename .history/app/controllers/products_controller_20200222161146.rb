@@ -40,7 +40,6 @@ class ProductsController < ApplicationController
     else
       redirect_back(fallback_location: root_path)
       flash[:alert] = 'Not authorized to update post'
-    end
   end
 
   def destroy

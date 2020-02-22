@@ -40,7 +40,15 @@ class ProductsController < ApplicationController
     else
       redirect_back(fallback_location: root_path)
       flash[:alert] = 'Not authorized to update post'
-    end
+  end
+
+  if current_user == @post.user
+    @post.update(post_params)
+    redirect_to '/posts'
+    flash[:notice] = 'Post is updated'
+  else
+    redirect_back(fallback_location: root_path)
+    flash[:alert] = 'Not authorized to update post'
   end
 
   def destroy
