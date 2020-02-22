@@ -28,4 +28,6 @@
         <%= label_tag(:productPrice, "Price") %>
         <%= product.price %>
     </p>
+
+    <%= button_to "Add to shoppingcart", '/products/shoppingcart', method: :get %>
 <% end %>
