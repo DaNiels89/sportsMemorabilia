@@ -5,22 +5,20 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
 
-  def show
-    @product = Product.find(params[:id])
-  end
+  def new; end
 
-  def new
-    @product = Product.new
+  def create
+    @product = Product.create(product_params)
+
+    redirect_to @product
   end
 
   def edit
     @product = Product.find(params[:id])
   end
 
-  def create
-    @product = Product.create(product_params)
-
-    redirect_to @product
+  def show
+    @product = Product.find(params[:id])
   end
 
   def update

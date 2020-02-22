@@ -1,6 +1,8 @@
 <h1>Show memorabilia</h1>
 
-<%= render partial: 'partials/product', locals: {product: @product} %>
+<% if @product.pic.attached? %>
+	<%= image_tag @product.pic %>
+<% end %>
 
 <%= link_to "Edit", "/products/#{@product.id}/edit" %>
 

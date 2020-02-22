@@ -1,0 +1,33 @@
+<h1>Show memorabilia</h1>
+
+    <% if product.pic.attached? %>
+        <div><%= link_to(image_tag(product.pic, class: "my-pic"), product) %></div>
+    <% end %>
+    <p>
+        <%= label_tag(:productName, "Name") %>
+        <%= product.name %>
+    </p>
+    <p>
+        <%= label_tag(:productBrand, "Brand") %>
+        <%= product.brand %>
+    </p>
+    <p>
+        <%= label_tag(:productMaterial, "Material") %>
+        <%= product.material %>
+    </p>
+    <p>
+        <%= label_tag(:productSize, "Size") %>
+        <%= product.size %>
+    </p>
+    <p>
+        <%= label_tag(:productPlayer, "Player") %>
+        <%= product.player %>
+    </p>
+    <p>
+        <%= label_tag(:productPrice, "Price") %>
+        <%= product.price %>
+    </p>
+
+<%= link_to "Edit", "/products/#{@product.id}/edit" %>
+
+<%= button_to “Delete”,  @product, method: :delete %>

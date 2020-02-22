@@ -1,0 +1,29 @@
+<h1>Welcome to Sports Memorabilia</h1>
+
+<% @products.each do |product| %>
+    <% if product.pic.attached? %>
+        <div><%= link_to(image_tag(product.pic, class: "my-pic"), product) %></div>
+    <% end %>
+    <p><%= product.name %></p>
+    <p><%= product.brand %></p>
+    <p><%= product.material %></p>
+    <p><%= product.size %></p>
+    <p><%= product.player %></p>
+    <p><%= product.price %></p>
+
+<% end %>
+
+
+
+
+<h4><strong><%= post.title %></strong></h4>
+<p> <%= post.caption %></p>
+<p>Budget: <%= post.budget %></p>
+<p><%= link_to post.user.email, post.user %></p>
+
+    t.string "name"
+    t.string "brand"
+    t.string "material"
+    t.string "size"
+    t.string "player"
+    t.decimal "price"
