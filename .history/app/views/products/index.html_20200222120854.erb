@@ -1,0 +1,5 @@
+<h1>Welcome to Sports Memorabilia</h1>
+
+<% @skateboards.each do |skateboard| %>
+	<%= link_to(skateboard.brand, “ /skateboards/#skateboards(skateboard.id), class: “skateboard-link” %> # put the / first, it means home  class creates an attribute in html
+<% end %>
