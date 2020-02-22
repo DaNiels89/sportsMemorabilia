@@ -1,4 +1,4 @@
-<%= form_with model: product, local: true do |form| %>
+<%= form_with scope: :product, url: products_path, local: true do |form| %>
   <p>
     <%= form.label :name %>
     <%= form.text_field :name %>
