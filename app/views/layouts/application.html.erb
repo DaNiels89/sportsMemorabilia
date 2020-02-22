@@ -15,26 +15,43 @@
   </head>
 
   <body>
-
-    <p class="navbar-text float-right">
+    <nav class="navbar navbar-light" style="background-color: #04B0E8;">
+      <a class="navbar-brand" href="/"> <%=image_tag "logo", size: "80x60"%></a>
       <% if user_signed_in? %>
-        Logged in as <strong><%= current_user.email %></strong>.
-        <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-        <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-      <% else %>
-        <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-        <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/products/new">New Product</a></li>
+        </ul>
       <% end %>
-    </p>
+      <p class="navbar-text">
+        <% if user_signed_in? %>
+          <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %> |
+          Logged in as <strong><%= current_user.email %></strong>
+        <% else %>
+          <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+          <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+        <% end %>
+      </p>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
 
-    <% if notice %>
-      <p class="alert alert-success"><%= notice %></p>
-    <% end %>
-    <% if alert %>
+        </ul>
+        <span class="navbar-text">
+          Navbar text with an inline element
+        </span>
+      </div>
+    </nav>
+    
+      <% if notice %>
+        <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <% if alert %>
       <p class="alert alert-danger"><%= alert %></p>
-    <% end %>
+      <% end %>
 
-    <%= yield %>
+  
+      <%= yield %>
 
   </body>
 </html>
