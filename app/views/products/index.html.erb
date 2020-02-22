@@ -1,31 +1,27 @@
 <h1>Welcome to Sports Memorabilia</h1>
 
-<% @products.each do |product| %>
-    <% if product.pic.attached? %>
-        <div><%= link_to(image_tag(product.pic, class: "my-pic"), product) %></div>
-    <% end %>
-    <p>
-        <%= label_tag(:productName, "Name") %>
-        <%= product.name %>
-    </p>
-    <p>
-        <%= label_tag(:productBrand, "Brand") %>
-        <%= product.brand %>
-    </p>
-    <p>
-        <%= label_tag(:productMaterial, "Material") %>
-        <%= product.material %>
-    </p>
-    <p>
-        <%= label_tag(:productSize, "Size") %>
-        <%= product.size %>
-    </p>
-    <p>
-        <%= label_tag(:productPlayer, "Player") %>
-        <%= product.player %>
-    </p>
-    <p>
-        <%= label_tag(:productPrice, "Price") %>
-        <%= product.price %>
-    </p>
-<% end %>
+<div class="container-fluid">
+
+    <div class="row">
+            <% @products.each do |product| %>
+                <div class="col-3">
+                    <div class="card text-center" style="width: 18rem; height:23rem; margin-bottom: 2rem">
+                        <div><%= link_to(image_tag(product.pic, size: 10*10, class: "my-pic"), product) %></div>
+                        <div class="card-body">
+                            <h1 class="card-title"><%= product.name %></h1>
+                            <p class="card-text"><%= product.brand %></p>
+                            <p class="card-text"><%= product.price %></p>
+                            <% if user_signed_in? && current_user.id == product.user_id%>
+                                <%= button_to "Edit", "/products/#{product.id}/edit", method: :get, class: "btn btn-info" %>
+
+                                <%= button_to "Delete", product, method: :delete, class: "btn btn-danger"%>
+
+                            <% end %>
+                        </div>
+                    </div>
+
+                </div>
+            
+        
+            <% end %>
+        </div>
