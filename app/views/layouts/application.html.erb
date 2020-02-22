@@ -18,9 +18,10 @@
     <nav class="navbar navbar-light" style="background-color: #04B0E8;">
       <a class="navbar-brand" href="/"> <%=image_tag "logo", size: "80x60"%></a>
       <% if user_signed_in? %>
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="/products/new">New Product</a></li>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/products/new">New Product</a>
+            </li>
         </ul>
       <% end %>
       <p class="navbar-text">
