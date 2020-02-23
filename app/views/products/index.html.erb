@@ -1,61 +1,24 @@
 <h1>Welcome to Sports Memorabilia</h1>
 
 
-<div class="container-fluid">
-
+<div class="container">
     <div class="row">
-            <% @products.each do |product| %>
-                <div class="col-3">
-                    <div class="card text-center" style="width: 18rem; height:23rem; margin-bottom: 2rem">
-                        <div><%= link_to(image_tag(product.pic, size: 10*10, class: "my-pic"), product) %></div>
-                        <div class="card-body">
-                            <h1 class="card-title"><%= productCh.name %></h1>
-                            <p class="card-text"><%= product.brand %></p>
-                            <p class="card-text"><%= product.price %></p>
-                            <% if user_signed_in? && current_user.id == product.user_id%>
-                                <%= button_to "Edit", "/products/#{product.id}/edit", method: :get, class: "btn btn-info" %>
-
-                                <%= button_to "Delete", product, method: :delete, class: "btn btn-danger"%>
-
-                            <% end %>
-                        </div>
+        <% @products.each do |product| %>
+            <div class="col-4">
+                <div class="card text-center" style="width: 18rem; height:30rem; margin-bottom: 2rem">
+                    <div><%= link_to(image_tag(product.pic, size: 10*10, class: "my-pic"), product) %></div>
+                    <div class="card-body">
+                        <h3 class="card-title"><%= product.name %></h3>
+                        <p class="card-text"><%= product.brand %></p>
+                        <p class="card-text"><%= product.price %></p>
+                        <% if user_signed_in? && current_user.id == product.user_id%>
+                            <%= button_to "Edit", "/products/#{product.id}/edit", method: :get, class: "btn btn-info" %>
+                            <%= button_to "Delete", product, method: :delete, class: "btn btn-danger"%>
+                            <%= button_to "Add to shopping cart", "/products/shoppingcart", method: :get, class: "btn btn-primary" %>
+                        <% end %>
                     </div>
-
                 </div>
-            
-        
-            <% end %>
-        </div>
-
-<% @products.each do |product| %>
-    <% if product.pic.attached? %>
-        <div><%= link_to(image_tag(product.pic, class: "my-pic"), product) %></div>
-    <% end %>
-    <p>
-        <%= label_tag(:productName, "Name") %>
-        <%= product.name %>
-    </p>
-    <p>
-        <%= label_tag(:productBrand, "Brand") %>
-        <%= product.brand %>Ch
-    </p>
-    <p>
-        <%= label_tag(:productMaterial, "Material") %>
-        <%= product.material %>
-    </p>
-    <p>
-        <%= label_tag(:productSize, "Size") %>
-        <%= product.size %>
-    </p>
-    <p>
-        <%= label_tag(:productPlayer, "Player") %>
-        <%= product.player %>
-    </p>
-    <p>
-        <%= label_tag(:productPrice, "Price") %>
-        <%= product.price %>
-    </p>
-
-    <%= button_to "Add to shoppingcart", '/products/shoppingcart', method: :get %>
-<% end %>
-
+            </div>
+        <% end %>
+    </div>
+</div>

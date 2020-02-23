@@ -1,1 +1,59 @@
+
+
 <h1>Overview ShoppingCart</h1>
+
+ <p>Item is added to the shopping cart</p>
+ <div class="container">
+<div class="row">
+
+ <%= form_with model: @product, local: true do |form| %>
+
+  <div>
+    <%= form.label :name, "Name on Card:" %>
+  </div>
+  <div class="col-10">
+    <%= form.text_field :name %>
+  </div>
+
+<div class="row-2">
+    <%= form.label :brand, "Card Number:" %>
+  </div>
+  <div class="col-10">
+    <%= form.text_field :brand %>
+  </div>
+
+  <div class="row-2">
+    <%= form.label :material, "Expiration Date:" %>
+    </div>
+  <div class="col-10">
+    <%= form.text_field :material %>
+  </div>
+
+  <div class="row-2">
+    <%= form.label :size, "Shipping Address::" %>
+    </div>
+  <div class="col-10">
+    <%= form.text_field :size %>
+  </div>
+
+  <div class="row-2">
+    <%= form.label :player, "City:" %>
+    </div>
+  <div class="col-10">
+    <%= form.text_field :player %>
+  </div>
+
+  <div class="row-2">
+    <%= form.label :price, "Postal Code:" %>
+    </div>
+  <div class="col-10">
+    <%= form.text_field :price %>
+    
+  </div>
+
+  <div>
+    <%= form.submit "Buy" %>
+  </div>
+<% end %>
+</div>
+</div>
