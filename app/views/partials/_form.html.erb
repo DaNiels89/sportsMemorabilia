@@ -1,42 +1,58 @@
 <%= form_with model: product, local: true do |form| %>
-  <p>
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </p>
+  <div class="row">
+    <div class="col-2">
+      <%= form.label :name %>
+    </div>
+    <div class="col-10">
+      <%= form.text_field :name %>
+    </div>
 
-  <p>
+  <div class="col-2">
     <%= form.label :brand %>
+    </div>
+    <div class="col-10">
     <%= form.text_field :brand %>
-  </p>
+  </div>
 
-  <p>
+  <div class="col-2">
     <%= form.label :material %>
+    </div>
+    <div class="col-10">
     <%= form.text_field :material %>
-  </p>
+  </div>
 
-  <p>
+  <div class="col-2">
     <%= form.label :size %>
+    </div>
+    <div class="col-10">
     <%= form.text_field :size %>
-  </p>
+  </div>
 
-  <p>
+  <div class="col-2">
     <%= form.label :player %>
+    </div>
+    <div class="col-10">
     <%= form.text_field :player %>
-  </p>
-
-  <p>
+  </div
+  >
+  <div class="col-2">
     <%= form.label :price %>
+    </div>
+    <div class="col-10">
     <%= form.text_field :price %>
-  </p>
+  </div>
 
+  <div class="col-12">
     <% if @product.pic.attached? %>
         <div><%= @product.pic.filename %></div>
     <% else %>
         <%= label_tag(:productImage, "Image") %>
         <div><%= form.file_field :pic, required: true %></div>
     <% end %> 
+  </div>
 
-  <p>
+  <div>
     <%= form.submit %>
-  </p>
+  </div>
+  </div>
 <% end %>
